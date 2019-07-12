@@ -16,6 +16,7 @@
 		8500112D22D8E00500D10BCC /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8500112C22D8E00500D10BCC /* Contact.swift */; };
 		8500113022D8E0EB00D10BCC /* ContactController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8500112F22D8E0EB00D10BCC /* ContactController.swift */; };
 		8500113222D8E23400D10BCC /* ContactDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8500113122D8E23400D10BCC /* ContactDetailViewController.swift */; };
+		8500113622D8E8E700D10BCC /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8500113522D8E8E700D10BCC /* CloudKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,8 @@
 		8500112C22D8E00500D10BCC /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		8500112F22D8E0EB00D10BCC /* ContactController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactController.swift; sourceTree = "<group>"; };
 		8500113122D8E23400D10BCC /* ContactDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailViewController.swift; sourceTree = "<group>"; };
+		8500113322D8E8E400D10BCC /* CloudContacts.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CloudContacts.entitlements; sourceTree = "<group>"; };
+		8500113522D8E8E700D10BCC /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8500113622D8E8E700D10BCC /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -48,6 +52,7 @@
 			children = (
 				8500110F22D8D9A600D10BCC /* CloudContacts */,
 				8500110E22D8D9A600D10BCC /* Products */,
+				8500113422D8E8E700D10BCC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -62,9 +67,11 @@
 		8500110F22D8D9A600D10BCC /* CloudContacts */ = {
 			isa = PBXGroup;
 			children = (
+				8500113322D8E8E400D10BCC /* CloudContacts.entitlements */,
 				8500112622D8DAAC00D10BCC /* Models */,
-				8500112422D8DA9A00D10BCC /* Views */,
+				8500112922D8DFB100D10BCC /* Views */,
 				8500112522D8DAA500D10BCC /* Controllers */,
+				8500112422D8DA9A00D10BCC /* Storyboards */,
 				8500112222D8DA8200D10BCC /* Resources */,
 			);
 			path = CloudContacts;
@@ -83,20 +90,19 @@
 		8500112322D8DA8A00D10BCC /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				8500112922D8DFB100D10BCC /* CustomViews */,
 				8500112722D8DF6500D10BCC /* ContactListTableViewController.swift */,
 				8500113122D8E23400D10BCC /* ContactDetailViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
-		8500112422D8DA9A00D10BCC /* Views */ = {
+		8500112422D8DA9A00D10BCC /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
 				8500111922D8D9A700D10BCC /* LaunchScreen.storyboard */,
 				8500111422D8D9A600D10BCC /* Main.storyboard */,
 			);
-			path = Views;
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 		8500112522D8DAA500D10BCC /* Controllers */ = {
@@ -116,12 +122,12 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		8500112922D8DFB100D10BCC /* CustomViews */ = {
+		8500112922D8DFB100D10BCC /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				8500112A22D8DFC800D10BCC /* ContactTableViewCell.swift */,
 			);
-			path = CustomViews;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		8500112E22D8E0DB00D10BCC /* ModelControllers */ = {
@@ -130,6 +136,14 @@
 				8500112F22D8E0EB00D10BCC /* ContactController.swift */,
 			);
 			path = ModelControllers;
+			sourceTree = "<group>";
+		};
+		8500113422D8E8E700D10BCC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8500113522D8E8E700D10BCC /* CloudKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -164,6 +178,14 @@
 				TargetAttributes = {
 					8500110C22D8D9A600D10BCC = {
 						CreatedOnToolsVersion = 10.2.1;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -354,6 +376,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = CloudContacts/CloudContacts.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YY8J3FPYX8;
 				INFOPLIST_FILE = "$(SRCROOT)/CloudContacts/Resources/Info.plist";
@@ -372,6 +395,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = CloudContacts/CloudContacts.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YY8J3FPYX8;
 				INFOPLIST_FILE = "$(SRCROOT)/CloudContacts/Resources/Info.plist";
